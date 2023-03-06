@@ -1,7 +1,7 @@
 import streamlit as st
 from pytube import YouTube
 
-st.set_page_config(page_title="TubeGra", page_icon="📺", layout="wide")
+st.set_page_config(page_title="TubeGrab", page_icon="📺", layout="wide")
 
 st.title("TubeGrab 📺")
 
