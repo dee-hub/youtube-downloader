@@ -31,7 +31,7 @@ if video_link:
                 # create a row layout for each resolution and download button
                 res_col, button_col = st.columns([1, 2])
                 with res_col:
-                    st.write(f"{title} | {stream.resolution} - {stream.mime_type}")
+                    st.write(f"{stream.resolution} - {stream.mime_type}")
 
                 with button_col:
                     if st.button(f"Download {stream.resolution}"):
