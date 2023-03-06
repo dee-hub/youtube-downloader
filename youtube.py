@@ -35,12 +35,8 @@ if video_link:
                 with button_col:
                     if st.button(f"Download {stream.resolution}"):
                         with st.spinner(f"Downloading {stream.resolution}..."):
-                            stream_bytes = stream.stream_to_buffer()
-                            st.download_button(
-                                label=f"Click to download {stream.resolution}",
-                                data=stream_bytes.getvalue(),
-                                file_name=f"{title}.{stream.extension}"
-                            )
+                            stream.download()
+                        st.success(f"{stream.resolution} downloaded successfully!")
                         with open('download_count.txt', 'a+') as f:
                             f.seek(0)
                             count = int(f.read() or 0)
