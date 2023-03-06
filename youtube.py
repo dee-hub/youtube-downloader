@@ -1,9 +1,9 @@
 import streamlit as st
 from pytube import YouTube
 
-st.set_page_config(page_title="YouTube Downloader", page_icon="📺", layout="wide")
+st.set_page_config(page_title="TubeGrab", page_icon="📺", layout="wide")
 
-st.title("YouTube Downloader 📺")
+st.title("TubeGrab 📺")
 
 # create a text input box for the user to paste the YouTube video link
         # display the download count to the user
