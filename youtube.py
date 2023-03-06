@@ -29,10 +29,9 @@ if video_link:
         for stream in streams:
             with st.container():
                 # create a row layout for each resolution and download button
-                res_col, button_col = st.columns([1, 2])
+                res_col, button_col = st.columns([1, 3])
                 with res_col:
                     st.write(f"{stream.resolution} - {stream.mime_type}")
-
                 with button_col:
                     if st.button(f"Download {stream.resolution}"):
                         stream.download()
