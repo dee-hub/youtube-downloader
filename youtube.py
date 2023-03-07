@@ -1,12 +1,13 @@
 import streamlit as st
 from pytube import YouTube
+import os
 
 st.set_page_config(page_title="TubeGrab", page_icon="📺", layout="wide")
 
 st.title("TubeGrab 📺")
 
 # create a text input box for the user to paste the YouTube video link
-        # display the download count to the user
+# display the download count to the user
 with open('download_count.txt', 'r') as f:
     count = int(f.read() or 0)
     st.write(f"{count} videos downloaded")
@@ -34,9 +35,14 @@ if video_link:
                     st.write(f"{title} | {stream.resolution} - {stream.mime_type}")
 
                 with button_col:
+                    file_extension = stream.mime_type.split("/")[-1]
+                    video_bytes = stream.stream_to_buffer()
+                    st.success(f"{stream.resolution} download ready!")
                     if st.button(f"Download {stream.resolution}"):
-                        stream.download()
-                        st.success(f"{stream.resolution} downloaded successfully!")
+                        st.download_button(video_bytes, f"{title}.{file_extension}", f"Click here to download {title}.{file_extension}", key=counter)
+                        counter += 1
+                        file_size = len(video_bytes)
+                        st.write(f"Downloaded file: [{title}.{file_extension}]({title}.{file_extension}) ({round(file_size/1024/1024, 2)} MB)")
                         with open('download_count.txt', 'a+') as f:
                             f.seek(0)
                             count = int(f.read() or 0)
