@@ -39,7 +39,7 @@ if video_link:
                     video_bytes = stream.stream_to_buffer()
                     st.success(f"{stream.resolution} download ready!")
                     if st.button(f"Download {stream.resolution}"):
-                        st.download_button(video_bytes, f"{title}.{file_extension}", f"Click here to download {title}.{file_extension}", key=counter)
+                        st.download_button(data=video_bytes, mime=video/f"{file_extension}", label =f"Click here to download {title}.{file_extension}", key=counter)
                         counter += 1
                         file_size = len(video_bytes)
                         st.write(f"Downloaded file: [{title}.{file_extension}]({title}.{file_extension}) ({round(file_size/1024/1024, 2)} MB)")
